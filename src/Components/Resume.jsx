@@ -10,10 +10,10 @@ import {
 
 const Resume = () => {
   const projects = [
-    "Breast Cancer Detection using YOLO + Ensemble CNN",
-    "DocuChat – Document Q&A Chatbot (Gemini API)",
-    "Indian Sign Language Interpreter — in progress",
-    "Mental Health Analyzer using NLP",
+    "Ice Creem Website",
+    "Arena Website",
+    "Portfolio Website",
+    "",
   ];
 
   const skills = [
