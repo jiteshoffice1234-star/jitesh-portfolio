@@ -60,10 +60,10 @@ const GalleryCollections = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="w-full border-b bg-white sticky top-0 z-50">
+      <div className="w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-50 transition-colors duration-300">
         <div className="container mx-auto h-16 sm:h-20 md:h-[100px] flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-[20px]">
           {/* LEFT - Title */}
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-700 whitespace-nowrap">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-700 dark:text-purple-400 whitespace-nowrap">
             My Collections
           </h1>
 
@@ -76,8 +76,8 @@ const GalleryCollections = () => {
                 className={`flex items-center gap-2 cursor-pointer pb-1 transition-colors
                   ${
                     activeTab === tab.id
-                      ? "text-purple-600 border-b-2 border-purple-600"
-                      : "text-gray-600 hover:text-black"
+                      ? "text-purple-600 dark:text-purple-400 border-b-2 border-purple-600 dark:border-purple-400"
+                      : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
                   }`}
               >
                 <span className="text-sm xl:text-base">{tab.icon}</span>
@@ -90,7 +90,7 @@ const GalleryCollections = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-2xl text-gray-700 hover:text-purple-700 transition-colors"
+              className="lg:hidden text-2xl text-gray-700 dark:text-gray-300 hover:text-purple-700 dark:hover:text-purple-400 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -101,11 +101,12 @@ const GalleryCollections = () => {
             <a
               href="/"
               className="flex items-center gap-2
-                         bg-black text-white
+                         bg-black dark:bg-white text-white dark:text-black
                          px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full
                          hover:opacity-90 transition text-xs sm:text-sm md:text-base whitespace-nowrap"
+              aria-label="Go back to home page"
             >
-              <FaArrowLeft className="text-xs sm:text-sm" />
+              <FaArrowLeft className="text-xs sm:text-sm" aria-label="Back arrow icon" />
               <span className="hidden sm:inline">Back</span>
             </a>
           </div>
@@ -113,7 +114,7 @@ const GalleryCollections = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t shadow-lg">
+          <div className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300">
             <div className="container px-4 py-4">
               <nav className="flex flex-col space-y-3">
                 {tabs.map((tab) => (
@@ -123,8 +124,8 @@ const GalleryCollections = () => {
                     className={`flex items-center gap-3 py-3 px-4 rounded-lg cursor-pointer transition-colors
                       ${
                         activeTab === tab.id
-                          ? "bg-purple-50 text-purple-700 font-semibold"
-                          : "text-gray-700 hover:bg-gray-50"
+                          ? "bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 font-semibold"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                       }`}
                   >
                     <span className="text-lg">{tab.icon}</span>
@@ -138,18 +139,18 @@ const GalleryCollections = () => {
       </div>
 
       {/* PAGE CONTENT */}
-      <div className="container mx-auto py-6 sm:py-8 md:py-10 px-4 sm:px-6 md:px-8 lg:px-[20px]">
+      <div className="container mx-auto py-6 sm:py-8 md:py-10 px-4 sm:px-6 md:px-8 lg:px-[20px] bg-white dark:bg-gray-900 transition-colors duration-300">
         {/* Active Tab Indicator for Mobile */}
-        <div className="lg:hidden mb-6 p-4 bg-purple-50 rounded-lg">
+        <div className="lg:hidden mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
           <div className="flex items-center gap-3">
-            <span className="text-purple-600 text-lg">
+            <span className="text-purple-600 dark:text-purple-400 text-lg">
               {tabs.find(tab => tab.id === activeTab)?.icon}
             </span>
             <div>
-              <h2 className="text-lg font-semibold text-purple-700">
+              <h2 className="text-lg font-semibold text-purple-700 dark:text-purple-400">
                 {tabs.find(tab => tab.id === activeTab)?.label}
               </h2>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {galleryData[activeTab].length} photos
               </p>
             </div>
@@ -165,15 +166,16 @@ const GalleryCollections = () => {
               <div
                 key={index}
                 className="break-inside-avoid rounded-lg sm:rounded-sm overflow-hidden
-                           shadow-md hover:shadow-xl transition duration-300
-                           group cursor-pointer"
+                           shadow-md dark:shadow-gray-950 hover:shadow-xl transition duration-300
+                           group cursor-pointer bg-white dark:bg-gray-800"
               >
                 <div className="relative overflow-hidden">
                   <img
                     src={img}
-                    alt="personal"
+                    alt={`Personal gallery image ${index + 1} of ${galleryData.personal.length} - Jitesh Solanki's memories and personal moments`}
                     className="w-full h-auto object-cover transition-transform duration-500 ease-out
                              group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
                 </div>
@@ -189,17 +191,18 @@ const GalleryCollections = () => {
               <div
                 key={index}
                 className="rounded-lg sm:rounded-xl overflow-hidden
-                           shadow-md hover:shadow-xl
+                           shadow-md dark:shadow-gray-950 hover:shadow-xl
                            transition duration-300
-                           group cursor-pointer"
+                           group cursor-pointer bg-white dark:bg-gray-800"
               >
                 <div className="relative overflow-hidden">
                   <img
                     src={img}
-                    alt="gallery"
+                    alt={`${activeTab} gallery image ${index + 1} of ${galleryData[activeTab].length} - ${activeTab === "projects" ? "Project work showcase" : activeTab === "achievements" ? "Achievements and recognition" : "Photography collection"}`}
                     className="w-full h-48 sm:h-56 md:h-64 lg:h-[250px] object-cover 
                              transition-transform duration-500 ease-out
                              group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
                 </div>
@@ -212,10 +215,10 @@ const GalleryCollections = () => {
         {galleryData[activeTab].length === 0 && (
           <div className="text-center py-12 sm:py-16">
             <div className="text-5xl sm:text-6xl mb-4">📷</div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-2">
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
               No images in this collection yet
             </h3>
-            <p className="text-gray-500">Check back soon for updates!</p>
+            <p className="text-gray-500 dark:text-gray-400">Check back soon for updates!</p>
           </div>
         )}
       </div>

@@ -1,8 +1,22 @@
-html {
-  scroll-behavior: smooth;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section {
+    scroll-margin-top: 72px;
+  }
 }
 
-section {
-  scroll-margin-top: 72px;
+/* Dark mode body background */
+.dark body {
+  background-color: #111827 !important;
 }
 
+.dark #root {
+  background-color: #111827 !important;
+}

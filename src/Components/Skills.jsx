@@ -11,8 +11,8 @@ const Skills = () => {
     SkillData.map(() => ({
       x: Math.random() * 500,
       y: Math.random() * 200,
-      vx: (Math.random() - 0.5) * 0.05,
-      vy: (Math.random() - 0.5) * 0.05,
+      vx: (Math.random() - 0.5) * 0.04,
+      vy: (Math.random() - 0.5) * 0.04,
     }))
   );
 
@@ -123,14 +123,15 @@ const Skills = () => {
       id="skills"
       className="w-full flex flex-col items-center
                  min-h-[calc(100vh-72px)]
-                 pt-16 pb-24 bg-white"
+                 pt-16 pb-24 bg-white dark:bg-gray-900
+                 transition-colors duration-300"
     >
       {/* HEADER */}
       <div className="text-center max-w-3xl px-4">
-        <h1 className="text-4xl md:text-5xl font-semibold">
+        <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white">
           My <span className="text-purple-400">Skills</span>
         </h1>
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-gray-600 dark:text-gray-300">
           ✨ Technical expertise blended with creativity
         </p>
       </div>
@@ -142,9 +143,11 @@ const Skills = () => {
           relative w-full max-w-[1400px] mx-4 sm:mx-6 md:mx-8 lg:mx-12
           mt-16 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[450px]
           rounded-2xl lg:rounded-3xl
-          border border-cyan-200
+          border border-cyan-200 dark:border-cyan-800
           shadow-[0_0_15px_rgba(0,255,255,0.3)] sm:shadow-[0_0_25px_rgba(0,255,255,0.35)] lg:shadow-[0_0_35px_rgba(0,255,255,0.4)]
-          bg-white overflow-hidden
+          dark:shadow-[0_0_15px_rgba(0,255,255,0.15)]
+          bg-white dark:bg-gray-800 overflow-hidden
+          transition-colors duration-300
         "
       >
         {SkillData.map((skill, i) => (
@@ -157,7 +160,7 @@ const Skills = () => {
             }}
             className="
               absolute rounded-full
-              bg-[#D9DDDC] shadow-md
+              bg-[#D9DDDC] dark:bg-gray-700 shadow-md dark:shadow-gray-950
               flex flex-col items-center justify-center
               transition-transform duration-100 ease-linear
             "
@@ -165,7 +168,7 @@ const Skills = () => {
             <div className={`${ICON_SIZE <= 64 ? 'text-2xl' : ICON_SIZE <= 72 ? 'text-3xl' : 'text-4xl'} ${skill.color}`}>
               {skill.icon}
             </div>
-            <span className={`mt-1 ${ICON_SIZE <= 64 ? 'text-[10px]' : 'text-xs'} font-medium`}>
+            <span className={`mt-1 ${ICON_SIZE <= 64 ? 'text-[10px]' : 'text-xs'} font-medium text-gray-800 dark:text-gray-200`}>
               {skill.name}
             </span>
           </div>
@@ -178,11 +181,11 @@ const Skills = () => {
           {SkillProgressData.map((category, index) => (
             <div
               key={index}
-              className={`border border-blue-500 rounded-xl lg:rounded-2xl p-4 sm:p-6 bg-white
+              className={`border border-blue-500 dark:border-blue-700 rounded-xl lg:rounded-2xl p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-300
       ${index >= SkillProgressData.length - 2 ? "lg:col-span-2" : ""}
     `}
             >
-              <h3 className="text-blue-600 text-base sm:text-lg font-semibold mb-4 sm:mb-5 text-center">
+              <h3 className="text-blue-600 dark:text-blue-400 text-base sm:text-lg font-semibold mb-4 sm:mb-5 text-center">
                 {category.title}
               </h3>
 
@@ -190,11 +193,11 @@ const Skills = () => {
                 {category.skills.map((skill, i) => (
                   <div key={i}>
                     <div className="flex justify-between text-xs sm:text-sm font-medium mb-1">
-                      <span className="truncate pr-2">{skill.name}</span>
-                      <span className="text-blue-500 whitespace-nowrap">{skill.value}%</span>
+                      <span className="truncate pr-2 text-gray-700 dark:text-gray-300">{skill.name}</span>
+                      <span className="text-blue-500 dark:text-blue-400 whitespace-nowrap">{skill.value}%</span>
                     </div>
 
-                    <div className="w-full h-2 sm:h-3 rounded-full bg-gray-200 overflow-hidden">
+                    <div className="w-full h-2 sm:h-3 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
                       <div
                         className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
                         style={{ width: `${skill.value}%` }}
