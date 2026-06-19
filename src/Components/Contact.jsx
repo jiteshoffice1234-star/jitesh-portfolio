@@ -1,234 +1,208 @@
-import {
-  FaDownload,
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaGraduationCap,
-  FaLaptopCode,
-  FaLayerGroup,
-} from "react-icons/fa";
+import { useState } from "react";
+import { MdEmail, MdPhone, MdLocationOn, MdSend } from "react-icons/md";
+import { FaUser, FaPaperPlane } from "react-icons/fa";
 
-const Resume = () => {
-  const projects = [
-    "Ice Cream Website",
-    "Arena Website",
-    "Portfolio Website",
-  ];
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
 
-  const skills = [
-    "HTML5",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "React.js",
-    "Bootstrap",
-    "Tailwind CSS",
-    "Responsive Design",
-    "UI/UX Basics",
-    "Git & GitHub",
-    "REST APIs",
-    "Browser DevTools",
-    "Performance Optimization",
-    "Cross-Browser Compatibility",
-    "Problem Solving",
-    "Creativity",
-    "Teamwork",
-    "Communication",
-  ];
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
+    alert("Thank you for your message! I'll get back to you soon.");
+  };
 
   return (
-    <section
-      id="resume"
-      className="w-full min-h-screen lg:min-h-[calc(100vh-72px)] flex flex-col items-center justify-start pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-32 bg-white dark:bg-gray-900 px-4 sm:px-6 transition-colors duration-300"
-    >
-      {/* ===== HEADER ===== */}
-      <div className="text-center mb-8 sm:mb-12 md:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-          My Resume
+    <section id="contact" className="w-full min-h-screen flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* HEADER */}
+      <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-3xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          Let's Connect & <span className="text-purple-600 dark:text-purple-400">Collaborate</span>
         </h1>
-
-        <a
-          href="/resume.pdf"
-          download
-          className="mt-6 sm:mt-8 inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4
-             rounded-lg sm:rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium
-             transition shadow-lg text-sm sm:text-base"
-        >
-          <FaDownload className="text-sm sm:text-base" />
-          Download Resume
-        </a>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300">
+          Whether it's a new project or collaboration — I'd love to hear from you!
+        </p>
       </div>
 
-      {/* ===== RESUME CARD ===== */}
-      <div
-        className="
-          w-full max-w-[1100px]
-          bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl
-          border border-gray-200 dark:border-gray-700
-          shadow-[0_5px_20px_rgba(0,0,0,0.06)] sm:shadow-[0_10px_40px_rgba(0,0,0,0.06)]
-          dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)]
-          px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12
-          transition-colors duration-300
-        "
-      >
-        {/* NAME */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
-          Jitesh S. Solanki
+      {/* CONTACT CONTAINER */}
+      <div className="w-full max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-16">
+          
+          {/* LEFT SIDE - CONTACT INFO */}
+          <div className="lg:w-2/5">
+            <div className="space-y-6 sm:space-y-8">
+              {/* EMAIL */}
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                  <MdEmail className="text-xl sm:text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
+                  <a 
+                    href="mailto:jiteshsolanki8990@gmail.com" 
+                    className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-base sm:text-lg"
+                  >
+                    jiteshsolanki8990@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* PHONE */}
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                  <MdPhone className="text-xl sm:text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1">Phone</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg">Available on request</p>
+                </div>
+              </div>
+
+              {/* LOCATION */}
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                  <MdLocationOn className="text-xl sm:text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1">Location</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg">Ahmedabad, Gujarat, India</p>
+                </div>
+              </div>
+            </div>
+
+            {/* DECORATIVE ELEMENT */}
+            <div className="mt-10 sm:mt-12 hidden lg:block">
+              <div className="w-64 h-64 rounded-full bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 opacity-50"></div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE - CONTACT FORM */}
+          <div className="lg:w-3/5">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-gray-950 p-6 sm:p-8 md:p-10 transition-colors duration-300">
+              {/* NAME FIELD */}
+              <div className="mb-6 sm:mb-8">
+                <label className="flex items-center gap-2 text-gray-700 dark:text-gray-300 font-medium mb-3">
+                  <FaUser className="text-purple-600 dark:text-purple-400" />
+                  <span>Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                />
+              </div>
+
+              {/* EMAIL FIELD */}
+              <div className="mb-6 sm:mb-8">
+                <label className="flex items-center gap-2 text-gray-700 dark:text-gray-300 font-medium mb-3">
+                  <MdEmail className="text-purple-600 dark:text-purple-400" />
+                  <span>Email</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  required
+                  className="w-full px-4 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                />
+              </div>
+
+              {/* SUBJECT FIELD */}
+              <div className="mb-6 sm:mb-8">
+                <label className="flex items-center gap-2 text-gray-700 dark:text-gray-300 font-medium mb-3">
+                  <FaPaperPlane className="text-purple-600 dark:text-purple-400" />
+                  <span>Subject</span>
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Project Discussion"
+                  required
+                  className="w-full px-4 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                />
+              </div>
+
+              {/* MESSAGE FIELD */}
+              <div className="mb-8 sm:mb-10">
+                <label className="flex items-center gap-2 text-gray-700 dark:text-gray-300 font-medium mb-3">
+                  <MdSend className="text-purple-600 dark:text-purple-400" />
+                  <span>Message</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project..."
+                  rows="5"
+                  required
+                  className="w-full px-4 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition resize-none"
+                />
+              </div>
+
+              {/* SUBMIT BUTTON */}
+              <button
+                type="submit"
+                className="w-full px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white font-semibold rounded-lg sm:rounded-xl transition duration-300 flex items-center justify-center gap-2"
+              >
+                <MdSend className="text-lg" />
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* ADDITIONAL CONTACT METHODS */}
+      <div className="mt-16 sm:mt-20 md:mt-24 text-center max-w-3xl mx-auto">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+          Prefer other ways to connect?
         </h2>
-
-        {/* ROLE */}
-        <p className="text-center text-gray-700 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">
-          🎓 B.Tech — Computer Engineering
-        </p>
-
-        {/* LOCATION */}
-        <p className="flex justify-center items-center gap-1 sm:gap-2 mt-1 text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-          <FaMapMarkerAlt className="text-red-500 text-xs sm:text-sm" />
-          Ahmedabad, Gujarat, India
-        </p>
-
-        {/* CONTACT */}
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mt-2 sm:mt-3 text-gray-700 dark:text-gray-300 text-sm sm:text-base">
-          <div className="flex items-center justify-center gap-1 sm:gap-2">
-            <FaEnvelope className="text-purple-500 text-xs sm:text-sm" />
-            <span className="break-all text-center">jiteshsolanki8990@gmail.com</span>
-          </div>
-
-          <div className="flex items-center justify-center gap-1 sm:gap-2">
-            <FaPhone className="text-blue-500 text-xs sm:text-sm" />
-            <span className="text-gray-500">Available on request</span>
-          </div>
-        </div>
-
-        {/* SUMMARY */}
-        <p className="mt-4 sm:mt-6 text-center text-gray-700 dark:text-gray-300 leading-relaxed max-w-full sm:max-w-[900px] mx-auto text-sm sm:text-base">
-          Passionate Front-End Developer experienced in building responsive,
-          user-friendly web interfaces and modern UI/UX experiences. Skilled in
-          HTML, CSS, JavaScript, React.js, Tailwind CSS, and Bootstrap, with a
-          strong focus on performance, accessibility, and clean code. Always
-          driven to craft engaging digital experiences and impactful web
-          solutions
-        </p>
-      </div>
-
-      {/* ===== EDUCATION SECTION ===== */}
-      <div className="w-full max-w-[1100px] mt-10 sm:mt-14 md:mt-16 lg:mt-20">
-        {/* TITLE */}
-        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl bg-purple-600 shadow-lg">
-            <FaGraduationCap className="text-white text-base sm:text-xl" />
-          </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">Education</h2>
-        </div>
-
-        {/* EDUCATION CARDS */}
-        <div className="space-y-4 sm:space-y-6 md:space-y-8">
-          {/* B.Tech */}
-          <div
-            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 p-4 sm:p-6 md:p-8
-                    shadow-[0_5px_20px_rgba(128,90,213,0.15)] sm:shadow-[0_8px_30px_rgba(128,90,213,0.15)]
-                    dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)] transition-colors duration-300"
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          <a 
+            href="mailto:jiteshsolanki8990@gmail.com" 
+            className="px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg transition"
           >
-            <h3 className="text-lg sm:text-xl md:text-xl font-semibold text-gray-900 dark:text-white">
-              B.Tech in Computer Engineering
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">Atmiya University, Rajkot</p>
-            <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm sm:text-base">
-              2021 – 2025 — Current CGPA: 8.74
-            </p>
-          </div>
-
-          {/* 12th */}
-          <div
-            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 p-4 sm:p-6 md:p-8
-                    shadow-[0_5px_20px_rgba(128,90,213,0.15)] sm:shadow-[0_8px_30px_rgba(128,90,213,0.15)]
-                    dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)] transition-colors duration-300"
+            Email me directly
+          </a>
+          
+          <a 
+            href="https://linkedin.com/in/jitesh-solanki-3b5930240/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-800 text-blue-800 dark:text-blue-400 rounded-lg transition"
           >
-            <h3 className="text-lg sm:text-xl md:text-xl font-semibold text-gray-900 dark:text-white">
-              Higher Secondary (12th)
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">L.B.S Boys School</p>
-            <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm sm:text-base">2019 – 2021 — 72.92%</p>
-          </div>
-
-          {/* 10th */}
-          <div
-            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 p-4 sm:p-6 md:p-8
-                    shadow-[0_5px_20px_rgba(128,90,213,0.15)] sm:shadow-[0_8px_30px_rgba(128,90,213,0.15)]
-                    dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)] transition-colors duration-300"
-          >
-            <h3 className="text-lg sm:text-xl md:text-xl font-semibold text-gray-900 dark:text-white">
-              Secondary (10th)
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">Secondary School Bhadli</p>
-            <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm sm:text-base">2018 – 2019 — 67.66%</p>
-          </div>
-        </div>
-      </div>
-
-      {/* ===== PROJECTS & SKILLS SECTION ===== */}
-      <div className="w-full max-w-[1100px] mx-auto py-8 sm:py-10 md:py-12 lg:py-12 px-0">
-        {/* ================= PROJECTS ================= */}
-        <div className="mb-8 sm:mb-10 md:mb-12">
-          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl bg-purple-600 shadow-lg">
-              <FaLaptopCode className="text-white text-base sm:text-xl" />
-            </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">Projects</h2>
-          </div>
-          <div
-            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 p-4 sm:p-6 md:p-8
-                    shadow-[0_5px_20px_rgba(128,90,213,0.15)] sm:shadow-[0_8px_30px_rgba(128,90,213,0.15)]
-                    dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)] transition-colors duration-300"
-          >
-            <ul className="space-y-2 sm:space-y-3 md:space-y-4 ml-4 sm:ml-6">
-              {projects.map((project, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-2 sm:gap-3 text-gray-800 dark:text-gray-300 text-sm sm:text-base"
-                >
-                  <span className="text-purple-600 dark:text-purple-400 text-base sm:text-lg mt-0.5">•</span>
-                  <span>{project}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* ================= SKILLS ================= */}
-        <div>
-          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl bg-purple-600 shadow-lg">
-              <FaLayerGroup className="text-white text-base sm:text-xl" />
-            </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">Skills</h2>
-          </div>
-          <div
-            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 p-4 sm:p-6 md:p-8
-                    shadow-[0_5px_20px_rgba(128,90,213,0.15)] sm:shadow-[0_8px_30px_rgba(128,90,213,0.15)]
-                    dark:shadow-[0_5px_20px_rgba(0,0,0,0.3)] transition-colors duration-300"
-          >
-            <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
-              {skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="
-                    px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium
-                    text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30
-                    border border-purple-200 dark:border-purple-800
-                    shadow-[0_0_15px_rgba(168,85,247,0.2)] sm:shadow-[0_0_20px_rgba(168,85,247,0.25)]
-                    hover:bg-purple-100 dark:hover:bg-purple-800/50 transition
-                    whitespace-nowrap
-                  "
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+            Connect on LinkedIn
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-export default Resume;
+export default Contact;
